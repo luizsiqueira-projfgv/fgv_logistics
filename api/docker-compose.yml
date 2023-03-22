@@ -1,0 +1,41 @@
+version: '3.8'
+services:
+#  adonis_app:
+#    container_name: adonis_app
+#    build:
+#      context: .
+#    volumes:
+#      - .:/home/node/app
+#    ports: 
+#      - 3333:3333
+#    depends_on:
+#      - database
+
+#  adminer:
+#      image: adminer:latest
+#      restart: always
+#      ports:
+#        - 8080:8080
+#      depends_on:
+#        - database
+
+  database:
+    container_name: adonis_mssql
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    # command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    ports: 
+      - "${MSSQL_PORT}:1433"
+    expose:
+      - ${MSSQL_PORT}
+    environment:
+      MSSQL_SERVER: ${MSSQL_SERVER}
+      MSSQL_DB_NAME: ${MSSQL_DB_NAME}
+      MSSQL_USER: ${MSSQL_USER}
+      MSSQL_PASSWORD: ${MSSQL_PASSWORD}
+      MSSQL_TCP_PORT: ${MSSQL_PORT}
+
+    volumes:
+      - ${MSSQL_DATA_CONTAINER}
+      
+  
