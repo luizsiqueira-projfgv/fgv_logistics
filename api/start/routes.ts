@@ -24,9 +24,11 @@ Route.get('/', async () => {
   return { hello: 'world' }
 })
 
+/*
 Route.group(() => {
   Route.group(() => {
     Route.resource('/account', 'AccountsController')
     Route.resource('/user', 'UserController')
   }).prefix('/v1')
 }).prefix('/api')
+*/
