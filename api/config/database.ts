@@ -24,30 +24,31 @@ const databaseConfig: DatabaseConfig = {
   connections: {
     /*
     |--------------------------------------------------------------------------
-    | MSSQL config
+    | PostgreSQL config
     |--------------------------------------------------------------------------
     |
-    | Configuration for MSSQL database. Make sure to install the driver
+    | Configuration for PostgreSQL database. Make sure to install the driver
     | from npm when using this connection
     |
-    | npm i tedious
+    | npm i pg
     |
     */
-    mssql: {
-      client: 'mssql',
+    pg: {
+      client: 'pg',
       connection: {
-        user: Env.get('MSSQL_USER'),
-        port: Env.get('MSSQL_PORT'),
-        server: Env.get('MSSQL_SERVER'),
-        password: Env.get('MSSQL_PASSWORD', ''),
-        database: Env.get('MSSQL_DB_NAME'),
+        host: Env.get('PG_HOST'),
+        port: Env.get('PG_PORT'),
+        user: Env.get('PG_USER'),
+        password: Env.get('PG_PASSWORD', ''),
+        database: Env.get('PG_DB_NAME'),
       },
       migrations: {
         naturalSort: true,
       },
       healthCheck: false,
       debug: false,
-    }
+    },
+
   }
 }
 
